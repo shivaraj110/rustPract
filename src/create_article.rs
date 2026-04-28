@@ -20,5 +20,5 @@ pub fn create_article(
         published,
         has_meta,
     };
-    return article.title;
+    article.title
 }

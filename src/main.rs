@@ -1,20 +1,24 @@
-use crate::create_article::create_article;
-mod bubble_sort;
-mod create_article;
-mod string;
 fn main() {
-    // string::string_match();
-    // let mut array: [i32; 9] = [23, 43, 56, 78, 11, 14, 16, 65, 34];
-    // bubble_sort(&mut array);
-    // println!("Sorted array: (For loop) {:?}", array);
-    // array = [23, 43, 56, 78, 11, 14, 16, 69, 34];
-    // bubble_sort_while(&mut array);
-    // println!("Sorted array (While loop): {:?}", array);
-    let title = String::from("lmao");
-    let content = String::from("lmfao");
-    let has_images = true;
-    let published = false;
-    let has_meta = true;
-    let article = create_article(title, content, has_images, published, has_meta);
-    println!("article created successfully {}", article);
+    let circle = Shape::Circle(5.0);
+    let rectangle = Shape::Rectangle(5.0, 10.0);
+    let square = Shape::Square(5.0);
+    println!("Area of circle {}", circle.area());
+    println!("Area of rectangle {}", rectangle.area());
+    println!("Area of square {}", square.area());
+}
+
+enum Shape {
+    Square(f32),
+    Rectangle(f32, f32),
+    Circle(f32),
+}
+
+impl Shape {
+    fn area(&self) -> f32 {
+        match self {
+            Shape::Square(side) => side * side,
+            Shape::Rectangle(length, width) => length * width,
+            Shape::Circle(radius) => std::f32::consts::PI * (radius * radius),
+        }
+    }
 }
